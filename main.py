@@ -14,17 +14,8 @@ except FileNotFoundError:
     print("The file LE.csv was not found.")
     LoadedData = []
 
-# getdata route
-@app.route('/getdata', methods=['GET'])
-def get_data():
-    # Return the data as a JSON response
-    if LoadedData:
-        return jsonify(LoadedData)
-    else:
-        return jsonify({"error": "No data found or file could not be loaded."}), 500
-
 # search route with pagination
-@app.route('/getdata/search', methods=['GET'])
+@app.route('/getdata', methods=['GET'])
 def search_and_paginate():
     """Searches for rows that match query parameters and returns paginated results."""
     name = request.args.get('name')
